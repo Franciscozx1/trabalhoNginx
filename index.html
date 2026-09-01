@@ -1,92 +1,1103 @@
+Ahhh, agora entendi 😂 Você quer UM ÚNICO BLOCO, sem explicação no meio, sem vários balões. Copia tudo daqui:
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Portfólio</title>
-    
+    <meta name="description" content="Portfólio de Francisco Rodrigues Rocha">
+    <title>Francisco Rodrigues Rocha | Portfólio</title>
+
     <style>
-        body {
-            background-color: rgb(143, 118, 155);
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
-        .imagem {   
-            width: 280px;
-            height: 280px;
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #08070d;
+            color: #f5f3ff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ::selection {
+            background: #8b5cf6;
+            color: white;
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #08070d;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #6d28d9;
+            border-radius: 20px;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            top: -200px;
+            left: -200px;
+            background: #7c3aed;
+            opacity: 0.08;
+            filter: blur(120px);
             border-radius: 50%;
-            overflow: hidden;
-            border: 2px solid black; 
-            object-fit: cover; 
-            display: block;
-            margin: 20px auto 10px auto; 
+            pointer-events: none;
+            z-index: -1;
         }
 
-        .nome {
-            text-align: center;
-            margin-bottom: 50px; 
+        body::after {
+            content: "";
+            position: fixed;
+            width: 450px;
+            height: 450px;
+            right: -200px;
+            bottom: -150px;
+            background: #4f46e5;
+            opacity: 0.08;
+            filter: blur(120px);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
         }
 
-        .grade-secoes {
+        .container {
+            width: 90%;
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 999;
+            background: rgba(8, 7, 13, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .navbar {
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: #9f7aea;
+        }
+
+        .menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .menu a {
+            color: #aaa4b7;
+            font-size: 14px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .menu a:hover {
+            color: #ffffff;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 70px;
+            position: relative;
+        }
+
+        .hero-content {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr; 
-            column-gap: 30px; 
-            row-gap: 50px; 
-            margin-left: 60px; 
-            margin-right: 60px; 
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: center;
+            gap: 80px;
         }
 
-        .atvdestP {
+        .hero-text {
+            animation: aparecer 1s ease;
+        }
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 14px;
+            border: 1px solid rgba(167, 139, 250, 0.2);
+            background: rgba(139, 92, 246, 0.08);
+            border-radius: 50px;
+            color: #c4b5fd;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        .bolinha {
+            width: 8px;
+            height: 8px;
+            background: #4ade80;
+            border-radius: 50%;
+            box-shadow: 0 0 12px #4ade80;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 7vw, 85px);
+            line-height: 1.02;
+            letter-spacing: -4px;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #9f7aea;
+        }
+
+        .hero p {
+            max-width: 650px;
+            color: #9791a3;
+            font-size: 18px;
+            margin-bottom: 35px;
+        }
+
+        .botoes {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .botao {
+            padding: 14px 22px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .botao-principal {
+            background: #8b5cf6;
+            color: white;
+            box-shadow: 0 10px 35px rgba(139, 92, 246, 0.25);
+        }
+
+        .botao-principal:hover {
+            background: #7c3aed;
+            transform: translateY(-3px);
+        }
+
+        .botao-secundario {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.12);
+            color: #ddd6e8;
+        }
+
+        .botao-secundario:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateY(-3px);
+        }
+
+        .foto-area {
+            display: flex;
+            justify-content: center;
+            animation: aparecerFoto 1s ease;
+        }
+
+        .foto-borda {
             width: 350px;
-            font-size: larger;
+            height: 350px;
+            padding: 7px;
+            border-radius: 50%;
+            background: linear-gradient(
+                135deg,
+                #c4b5fd,
+                #7c3aed,
+                #312e81
+            );
+            box-shadow:
+                0 0 80px rgba(124, 58, 237, 0.2),
+                0 25px 70px rgba(0,0,0,0.5);
         }
 
+        .foto {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 7px solid #100e16;
+            display: block;
+        }
+
+        section {
+            padding: 110px 0;
+        }
+
+        .titulo-secao {
+            margin-bottom: 50px;
+        }
+
+        .numero-secao {
+            color: #a78bfa;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .titulo-secao h2 {
+            font-size: clamp(30px, 5vw, 48px);
+            letter-spacing: -2px;
+            margin-bottom: 10px;
+        }
+
+        .titulo-secao p {
+            color: #858090;
+            max-width: 650px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            padding: 32px;
+            background: rgba(255,255,255,0.035);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            transition: 0.35s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-7px);
+            border-color: rgba(167,139,250,0.3);
+            background: rgba(255,255,255,0.05);
+        }
+
+        .icone {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            background: rgba(139,92,246,0.12);
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+
+        .card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #8f8999;
+            font-size: 15px;
+        }
+
+        .sobre {
+            display: grid;
+            grid-template-columns: 0.7fr 1.3fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .numero-grande {
+            padding: 45px;
+            border-radius: 20px;
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(139,92,246,0.15),
+                    rgba(255,255,255,0.025)
+                );
+            border: 1px solid rgba(167,139,250,0.15);
+        }
+
+        .numero-grande strong {
+            display: block;
+            color: #a78bfa;
+            font-size: 70px;
+            line-height: 1;
+            margin-bottom: 15px;
+        }
+
+        .numero-grande p {
+            color: #928c9d;
+        }
+
+        .texto-sobre p {
+            color: #96909f;
+            margin-bottom: 18px;
+        }
+
+        .timeline {
+            border-left: 1px solid rgba(167,139,250,0.25);
+            padding-left: 35px;
+            margin-left: 10px;
+        }
+
+        .experiencia {
+            position: relative;
+            margin-bottom: 50px;
+        }
+
+        .experiencia:last-child {
+            margin-bottom: 0;
+        }
+
+        .experiencia::before {
+            content: "";
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #8b5cf6;
+            border-radius: 50%;
+            left: -41px;
+            top: 8px;
+            box-shadow: 0 0 15px rgba(139,92,246,0.8);
+        }
+
+        .experiencia small {
+            color: #a78bfa;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+            font-size: 11px;
+        }
+
+        .experiencia h3 {
+            font-size: 22px;
+            margin: 7px 0;
+        }
+
+        .experiencia p {
+            color: #8f8999;
+            max-width: 800px;
+        }
+
+        .tecnologias {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .grupo h3 {
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+
+        .lista {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            padding: 10px 15px;
+            background: rgba(139,92,246,0.08);
+            border: 1px solid rgba(167,139,250,0.15);
+            border-radius: 8px;
+            color: #c8c1d4;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .tag:hover {
+            color: white;
+            background: rgba(139,92,246,0.18);
+            transform: translateY(-2px);
+        }
+
+        .contato {
+            text-align: center;
+            padding: 100px 30px;
+            border-radius: 25px;
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(124,58,237,0.15),
+                    rgba(255,255,255,0.025)
+                );
+            border: 1px solid rgba(167,139,250,0.13);
+        }
+
+        .contato h2 {
+            font-size: clamp(32px, 5vw, 55px);
+            letter-spacing: -2px;
+            margin-bottom: 15px;
+        }
+
+        .contato p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            color: #908a9b;
+        }
+
+        .contato .botoes {
+            justify-content: center;
+        }
+
+        footer {
+            margin-top: 80px;
+            padding: 30px;
+            text-align: center;
+            color: #625d6d;
+            font-size: 13px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+
+        footer span {
+            color: #9f7aea;
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes aparecerFoto {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @media (max-width: 900px) {
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 50px;
+            }
+
+            .hero {
+                padding-top: 120px;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .botoes {
+                justify-content: center;
+            }
+
+            .foto-area {
+                order: -1;
+            }
+
+            .foto-borda {
+                width: 280px;
+                height: 280px;
+            }
+
+            .sobre {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .tecnologias {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 650px) {
+
+            .container {
+                width: 92%;
+            }
+
+            .navbar {
+                height: 65px;
+            }
+
+            .menu {
+                gap: 13px;
+            }
+
+            .menu a {
+                font-size: 11px;
+            }
+
+            .logo {
+                font-size: 18px;
+            }
+
+            .hero h1 {
+                font-size: 45px;
+                letter-spacing: -2px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .foto-borda {
+                width: 220px;
+                height: 220px;
+            }
+
+            section {
+                padding: 75px 0;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                padding: 25px;
+            }
+
+            .numero-grande {
+                padding: 30px;
+            }
+
+            .numero-grande strong {
+                font-size: 55px;
+            }
+
+            .contato {
+                padding: 70px 20px;
+            }
+
+            .timeline {
+                padding-left: 25px;
+            }
+
+            .experiencia::before {
+                left: -31px;
+            }
+        }
+
+        @media (max-width: 430px) {
+
+            .menu {
+                gap: 9px;
+            }
+
+            .menu a {
+                font-size: 10px;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .status {
+                font-size: 11px;
+            }
+
+            .botao {
+                width: 100%;
+            }
+        }
     </style>
 </head>
+
 <body>
-    <img class="imagem" src="Atirador_0221.jpeg" alt="atirador_0221">
-    
-    <h1 class="nome">FRANCISCO RODRIGUES ROCHA</h1>
 
-    <div class="grade-secoes">
-        
-        <div class="atvDest">
-            <h2>ATIVIDADES DESTAQUES</h2>
-            <p class="atvdestP"> Atualmente as atividades que eu considero destaque 
-                são meus estudos na fatec, estagio na Unesp, e minha função como 
-                monitor no Tiro de Guerra 02-013
-            </p>
+    <header>
+        <div class="container navbar">
+
+            <a href="#inicio" class="logo">
+                FR<span>.</span>
+            </a>
+
+            <ul class="menu">
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#destaques">Destaques</a></li>
+                <li><a href="#experiencia">Experiência</a></li>
+                <li><a href="#conhecimentos">Conhecimentos</a></li>
+                <li><a href="#contato">Contato</a></li>
+            </ul>
+
+        </div>
+    </header>
+
+    <section class="hero" id="inicio">
+
+        <div class="container">
+
+            <div class="hero-content">
+
+                <div class="hero-text">
+
+                    <div class="status">
+                        <span class="bolinha"></span>
+                        Disponível para oportunidades
+                    </div>
+
+                    <h1>
+                        Francisco<br>
+                        <span>Rodrigues Rocha.</span>
+                    </h1>
+
+                    <p>
+                        Estudante de tecnologia, apaixonado por programação,
+                        desenvolvimento de sistemas e soluções tecnológicas.
+                        Atualmente atuo como estagiário na UNESP.
+                    </p>
+
+                    <div class="botoes">
+
+                        <a href="#sobre" class="botao botao-principal">
+                            Conheça meu perfil
+                        </a>
+
+                        <a href="#contato" class="botao botao-secundario">
+                            Entre em contato
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="foto-area">
+
+                    <div class="foto-borda">
+
+                        <img
+                            class="foto"
+                            src="Atirador_0221.jpeg"
+                            alt="Foto de Francisco Rodrigues Rocha"
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="habilidades">
-            <h2>HABILIDADES</h2>
-            <p class="atvdestP">Acredito que algumas de minhas habilidades é a disposição para aprender,
-                inglês bom, facilidade no geral em aprender, e boa comunicação.
-            </p>
+    </section>
+
+    <section id="sobre">
+
+        <div class="container">
+
+            <div class="titulo-secao">
+
+                <div class="numero-secao">
+                    01 — Sobre mim
+                </div>
+
+                <h2>
+                    Minha trajetória
+                </h2>
+
+                <p>
+                    Tecnologia, aprendizado constante e vontade de evoluir.
+                </p>
+
+            </div>
+
+            <div class="sobre">
+
+                <div class="numero-grande">
+
+                    <strong>4+</strong>
+
+                    <p>
+                        Semestres de formação em tecnologia,
+                        estudando programação, desenvolvimento,
+                        banco de dados e diferentes áreas da computação.
+                    </p>
+
+                </div>
+
+                <div class="texto-sobre">
+
+                    <p>
+                        Atualmente sou estudante da FATEC, onde venho
+                        construindo minha base na área de tecnologia,
+                        estudando programação, desenvolvimento de sistemas,
+                        banco de dados, desenvolvimento web, mobile e IoT.
+                    </p>
+
+                    <p>
+                        Também atuo como estagiário na UNESP, trabalhando
+                        principalmente com manutenção de computadores e
+                        suporte técnico para diferentes dispositivos.
+                    </p>
+
+                    <p>
+                        Tenho grande disposição para aprender e gosto de
+                        entender como as coisas funcionam. Busco constantemente
+                        melhorar minhas habilidades técnicas e profissionais.
+                    </p>
+
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="trabalho">
-            <h2>TRABALHOS</h2>
-            <p class="atvdestP"> Trabalhei por um tempo na fábrica de sapatos do meu tio, na qual 
-                eu fazia um pouco de tudo,desde passar cola, separarformas, montar caixas, 
-                tirar o excesso de cola que sobra na hora que seca, pregar palmilha. até as buchas(
-                papel que fica dentro do calçado depois de pronto). Mas Atualmente estou como estagiario
-                na Unesp, mexendo com Manutenção de computadores, dou suporte com impressoras, celulares
-                e outros aparelhos no geral
-            </p>
+    </section>
+
+    <section id="destaques">
+
+        <div class="container">
+
+            <div class="titulo-secao">
+
+                <div class="numero-secao">
+                    02 — Destaques
+                </div>
+
+                <h2>
+                    Atividades em destaque
+                </h2>
+
+                <p>
+                    Algumas das atividades que fazem parte da minha formação
+                    e desenvolvimento profissional.
+                </p>
+
+            </div>
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <div class="icone">
+                        🎓
+                    </div>
+
+                    <h3>
+                        FATEC
+                    </h3>
+
+                    <p>
+                        Formação na área de tecnologia, com estudos em
+                        programação, desenvolvimento de sistemas,
+                        banco de dados, web, mobile e IoT.
+                    </p>
+
+                </div>
+
+                <div class="card">
+
+                    <div class="icone">
+                        💻
+                    </div>
+
+                    <h3>
+                        Estágio na UNESP
+                    </h3>
+
+                    <p>
+                        Atuação com manutenção de computadores,
+                        suporte para impressoras, celulares e outros
+                        equipamentos tecnológicos.
+                    </p>
+
+                </div>
+
+                <div class="card">
+
+                    <div class="icone">
+                        🎖️
+                    </div>
+
+                    <h3>
+                        Monitor no Tiro de Guerra
+                    </h3>
+
+                    <p>
+                        Atuação como monitor no Tiro de Guerra 02-013,
+                        desenvolvendo responsabilidade, disciplina,
+                        comunicação e trabalho em equipe.
+                    </p>
+
+                </div>
+
+                <div class="card">
+
+                    <div class="icone">
+                        🚀
+                    </div>
+
+                    <h3>
+                        Aprendizado contínuo
+                    </h3>
+
+                    <p>
+                        Estudo constante de novas tecnologias e linguagens,
+                        buscando ampliar meus conhecimentos e minha
+                        capacidade de resolver problemas.
+                    </p>
+
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="conhecimentos">
-            <h2>CONHECIMENTOS</h2>
-            <p class="atvdestP"> Alguns conhecimentos são python, na qual aprendi a lógica de programação,
-                java, na qual vi programação orientada a objetos, e tecnicas de programação, javascript(node), html, css 
-                ambos usados no desenvolvimento web. Banco de dados SQL e NOSQL(mongodb). Golang, estudo à parte, sendo estudado
-                por conta propria, comecei a ver o começo da linguagem (sintaxe). E agora no 4° semestre estou vendo mobile, com react native
-                e IOT
-            </p>
+    </section>
+
+    <section id="experiencia">
+
+        <div class="container">
+
+            <div class="titulo-secao">
+
+                <div class="numero-secao">
+                    03 — Experiência
+                </div>
+
+                <h2>
+                    Experiência profissional
+                </h2>
+
+                <p>
+                    Experiências que contribuíram para minha formação
+                    profissional e pessoal.
+                </p>
+
+            </div>
+
+            <div class="timeline">
+
+                <div class="experiencia">
+
+                    <small>
+                        Experiência profissional
+                    </small>
+
+                    <h3>
+                        Fábrica de calçados
+                    </h3>
+
+                    <p>
+                        Trabalhei na fábrica de calçados do meu tio,
+                        realizando diferentes atividades no processo
+                        de produção, como aplicação de cola, separação
+                        de formas, montagem de caixas, acabamento,
+                        colocação de palmilhas e preparação dos calçados.
+                    </p>
+
+                </div>
+
+                <div class="experiencia">
+
+                    <small>
+                        Atual
+                    </small>
+
+                    <h3>
+                        Estagiário — UNESP
+                    </h3>
+
+                    <p>
+                        Atualmente trabalho com manutenção de computadores
+                        e suporte técnico, auxiliando também com impressoras,
+                        celulares e outros equipamentos.
+                    </p>
+
+                </div>
+
+                <div class="experiencia">
+
+                    <small>
+                        Atual
+                    </small>
+
+                    <h3>
+                        Monitor — Tiro de Guerra 02-013
+                    </h3>
+
+                    <p>
+                        Atuação como monitor, desenvolvendo competências
+                        relacionadas à liderança, disciplina, organização,
+                        responsabilidade e comunicação.
+                    </p>
+
+                </div>
+
+            </div>
+
         </div>
 
-    </div>
+    </section>
+
+    <section id="conhecimentos">
+
+        <div class="container">
+
+            <div class="titulo-secao">
+
+                <div class="numero-secao">
+                    04 — Conhecimentos
+                </div>
+
+                <h2>
+                    Tecnologias e habilidades
+                </h2>
+
+                <p>
+                    Tecnologias que já estudei ou venho estudando
+                    durante minha formação.
+                </p>
+
+            </div>
+
+            <div class="tecnologias">
+
+                <div class="grupo">
+
+                    <h3>
+                        Tecnologias
+                    </h3>
+
+                    <div class="lista">
+
+                        <span class="tag">Python</span>
+                        <span class="tag">Java</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">SQL</span>
+                        <span class="tag">MongoDB</span>
+                        <span class="tag">Golang</span>
+                        <span class="tag">React Native</span>
+                        <span class="tag">IoT</span>
+
+                    </div>
+
+                </div>
+
+                <div class="grupo">
+
+                    <h3>
+                        Habilidades
+                    </h3>
+
+                    <div class="lista">
+
+                        <span class="tag">Aprendizado rápido</span>
+                        <span class="tag">Boa comunicação</span>
+                        <span class="tag">Trabalho em equipe</span>
+                        <span class="tag">Proatividade</span>
+                        <span class="tag">Organização</span>
+                        <span class="tag">Responsabilidade</span>
+                        <span class="tag">Inglês</span>
+                        <span class="tag">Resolução de problemas</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section id="contato">
+
+        <div class="container">
+
+            <div class="contato">
+
+                <div class="numero-secao">
+                    05 — Contato
+                </div>
+
+                <h2>
+                    Vamos conversar?
+                </h2>
+
+                <p>
+                    Estou aberto a novas oportunidades, projetos
+                    e experiências. Entre em contato para conversarmos.
+                </p>
+
+                <div class="botoes">
+
+                    <a
+                        href="mailto:seuemail@email.com"
+                        class="botao botao-principal"
+                    >
+                        Enviar e-mail
+                    </a>
+
+                    <a
+                        href="#inicio"
+                        class="botao botao-secundario"
+                    >
+                        Voltar ao início
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer>
+
+        © 2026
+        <span>
+            Francisco Rodrigues Rocha
+        </span>
+        — Todos os direitos reservados.
+
+    </footer>
+
 </body>
 </html>
